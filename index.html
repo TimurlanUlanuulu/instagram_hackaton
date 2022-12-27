@@ -1,12 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="title">
+          <img src="./images/glass.svg" alt="" /> STOGRAMM
+        </div>
+        <div class="admin">
+          <span class="admin-text">Войти в админку</span>
+          <img src="./images/admin.svg" alt="admin" class="open-admin" />
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="add-page">
+        <button class="open-add-modal btn">Добавить новый пост</button>
+      </div>
+      <div class="add-post__modal">
+        <div class="new-post__form form">
+          <div class="add-post__title">
+            <h3>Добавить новый пост</h3>
+            <button class="close-add-modal btn">X</button>
+          </div>
+          <div class="add-content">
+            <div class="content-inp">
+              URL:
+              <input class="add-url-inp" type="text" />
+            </div>
+            <div class="content-inp">
+              Username:
+              <input class="add-name-inp" type="text" />
+            </div>
+            <div class="content-inp">
+              Описание:
+              <input class="add-descrip-inp" type="text" />
+            </div>
+            <div class="image">
+              <img class="display-img" src="" alt="" />
+            </div>
+          </div>
+          <button class="add-post-btn btn">Добавить</button>
+        </div>
+      </div>
+    </div>
+
+    <script src="./js/main.js"></script>
+  </body>
 </html>
