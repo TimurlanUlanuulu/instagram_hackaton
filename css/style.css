@@ -15,13 +15,13 @@
   padding: 30px 0;
 }
 
-.title {
+.title__header {
   font-size: 36px;
   display: flex;
   align-items: center;
 }
 
-.title img {
+.logo {
   width: 40px;
 }
 
@@ -34,10 +34,6 @@
   margin-left: 20px;
   width: 50px;
   cursor: pointer;
-}
-
-.add-new-post {
-  display: none;
 }
 
 .btn {
@@ -53,6 +49,13 @@
 .btn:hover {
   background-color: rgb(74, 11, 175);
   transition: 0.2s;
+}
+
+.add-page {
+  width: 200px;
+  text-align: center;
+  margin: 0 auto;
+  display: none;
 }
 
 .form {
@@ -122,4 +125,78 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+/* =============================== */
+body {
+  /* font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif; */
+  background: lightgray;
+}
+
+.post-content {
+  width: 50%;
+  margin: 0 auto;
+  background: white;
+  border-radius: 15px;
+  margin-top: 10px;
+}
+.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 15px;
+  padding-top: 10px;
+}
+
+.header-png {
+  width: 60px;
+}
+.title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 18px;
+}
+
+.title-html5 {
+  margin: 0;
+}
+
+.title-username {
+  margin: 0;
+}
+.delete {
+  width: 25px;
+}
+.edit {
+  width: 25px;
+}
+.post-img {
+  width: 100%;
+}
+.post-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.post-info {
+  padding: 15px;
+}
+.likes {
+  display: flex;
+  align-items: center;
+}
+.heart-svg {
+  width: 20px;
+}
+.comments {
+  text-align: center;
+  padding-bottom: 15px;
+}
+.comments_first-child {
+  color: gray;
+}
+
+.edit-delete {
+  display: none;
 }

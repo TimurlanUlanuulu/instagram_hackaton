@@ -16,8 +16,72 @@ const addNewPost = document.getElementsByClassName("add-post-btn")[0];
 
 // admin
 const admin = document.getElementsByClassName("open-admin")[0];
-const addPost = document.getElementsByClassName("add-new-post")[0];
+const addPost = document.getElementsByClassName("add-page")[0];
 const adminText = document.getElementsByClassName("admin-text")[0];
+const displayEdDel = document.getElementsByClassName("edit-delete");
+
+//post
+const postSection = document.getElementsByClassName("post")[0];
+
+render();
+
+async function render() {
+  const data = await getPostsFromStorage();
+  postSection.innerHTML = "";
+  data.forEach((post) => {
+    postSection.innerHTML += `
+    <div class="post-content">
+    <div class="post-header">
+      <div class="logo">
+        <img
+          src="./images/glass.svg"
+          alt="html5-icon"
+          class="header-png"
+        />
+      </div>
+      <div class="title">
+        <strong class="title-html5">stogramm</strong>
+        <p class="title-username">${post.name}</p>
+      </div>
+      <div class="edit-delete">
+        <img
+          src="./img/delete-broom-svgrepo-com.svg"
+          alt=""
+          class="delete"
+          onclick="deletePost(${post.id})"
+        />
+        <img src="./img/edit-svgrepo-com.svg" alt="" class="edit"
+        onclick="handleEdit(${post.id})"
+        />
+      </div>
+    </div>
+
+    <!--post-img-->
+    <div class="post-img">
+      <img src="${post.url}" alt="post-image" />
+    </div>
+
+    <!--post-info-->
+    <div class="post-info">
+      <div class="likes">
+        <img src="./img/heart-svgrepo-com.svg" class="heart-svg" />
+        <div>
+          <strong> V.V.Putin,V.Zelenskiy,J.Baiden </strong>
+          <span> and </span>
+          <strong>${post.likes} others</strong>
+        </div>
+      </div>
+      <strong>${post.name}</strong>
+      <span> ${post.desription} </span>
+    </div>
+    <div class="comments">
+      <span class="comments_first-child">view all comments(${post.comments})</span>
+    </div>
+  </div>
+        `;
+  });
+  checkAdmin();
+}
 
 let password = "";
 
@@ -25,15 +89,15 @@ function checkAdmin() {
   if (password === "123") {
     addPost.style.display = "block";
     adminText.innerText = "Добро пожаловать!";
-    //   for (let i of adminPanels) {
-    //     i.style.display = "block";
-    //   }
+    for (let i of displayEdDel) {
+      i.style.display = "block";
+    }
   } else {
     addPost.style.display = "none";
     adminText.innerText = "Войти в админку";
-    //   for (let i of adminPanels) {
-    //     i.style.display = "none";
-    //   }
+    for (let i of displayEdDel) {
+      i.style.display = "none";
+    }
   }
 }
 
@@ -51,6 +115,18 @@ async function setPostToStorage(newPost) {
     },
   };
   await fetch(`${API}`, options);
+}
+
+async function getPostsFromStorage() {
+  const data = await fetch(`${API}`);
+  const reslut = await data.json();
+  return reslut;
+}
+
+async function getPostById(id) {
+  const respons = await fetch(`${API}/${id}`);
+  const result = await respons.json();
+  return result;
 }
 
 //!==================================
@@ -88,10 +164,9 @@ addNewPost.addEventListener("click", async function () {
   };
 
   await setPostToStorage(newPost);
-  //   render();
+  addPost.style.display = "none";
+  render();
   addNameInp.value = "";
   addDescInp.value = "";
   addUrlInp.value = "";
 });
-
-
